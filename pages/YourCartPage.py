@@ -16,3 +16,6 @@ class YourCartPage(PageObject):
 
     def get_first_product_item_list(self):
         return self.driver.find_element(By.CLASS_NAME, self.class_product_name).text
+
+    def checkout(self):
+        return self.driver.find_element(By.ID, 'checkout').click()

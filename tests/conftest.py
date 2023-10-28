@@ -1,6 +1,7 @@
 import pytest
 
 from pages.LoginPage import LoginPage
+from pages.ProductsPage import ProductsPage
 
 
 def pytest_addoption(parser):
@@ -29,4 +30,13 @@ def login_saucedemo(open_browser):
     login_p = open_browser
     login_p.enter_login()
     yield login_p
+
+@pytest.fixture()
+def add_product_to_cart(login_saucedemo):
+    products_p = ProductsPage(login_saucedemo.driver)
+    products_p.add_random_product_to_cart()
+    yield products_p
+
+
+
 
